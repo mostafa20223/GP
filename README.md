@@ -10,8 +10,9 @@
 3. Renad has mentioned today that she prepared some slides to explain the PCA. Awesome, thanks Renad! We will start next week with her presentation.
 4. Please apply the PCA on the MSI gastric cancer data (please remember to use "goodlist" to guide you accessing only spectral information without including the background). In this task please do the following (this will be part of your thesis):
      * UseApply PCA to perform dimensionality reduction from 82 to 2 dimensions (i.e. n_components=2):
-        * i) use scatter plot to show the reduced data
-        * ii) show the amount of explained variance in each of  those 2 principal components. iii) color each point in the PCA scatter plot using the protein intensity value at m/z 3374.
+        * i) use scatter plot to show the reduced data.
+        * ii) show the amount of explained variance in each of  those 2 principal components.
+        * iii) color each point in the PCA scatter plot using the protein intensity value at m/z 3374.
      * Apply the PCA to reduce the MSI data into:
         * i) 3 dimensions and show the explained variance retained in each of those 3 principal components.
         * ii) 5 dimensions and and show the explained variance in each component. 
