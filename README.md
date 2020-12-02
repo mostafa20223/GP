@@ -22,7 +22,8 @@
      * Similarly to what we have discussed today, please access the MSI data and show protein images at m/z = [4965, 4999, 5067]. 
      * Show the average spectrum of patient#1 and Patient#30.
      * Apply the above described PCA analysis but on the breast cancer data (either show it next week or the week after).
-6. After Mid-term Exams: A full summary presentation will be delivered to Dr/ Ahmed Morsy at college to keep him updated
+6. Apply t-SNE (n_components=2) for the result of PCA nad give a comment for the output
+7. After Mid-term Exams: A full summary presentation will be delivered to Dr/ Ahmed Morsy at college to keep him updated
 
 <h2 id="B"> Notes / Useful Links </h2>
 
