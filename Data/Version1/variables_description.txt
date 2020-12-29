@@ -1,9 +1,0 @@
-Clinical_data: contains clinical data for each sample
-goodlist: tells for each pixel in the unfolded MSI_data_cube if it is a MSI spectrum or not
-HE_image: histological image for each sample
-MSI_data_cube: contains the spectral data in the z-dimension; not every pixel is associated to a MSI spectrum (see goodlist)
-peak_list: contains information about the peaks (mz value, average intensity, lower boundary, upper boundary)
-pixel_to_sample_ID: tells for each pixel in the MSI_data_cube to which sample_ID it belongs; can be linked to sample_ID of Clinical_data table
-x: width of dataset in pixels
-y: height of dataset in pixels
-z: number of peaks (z-dimension of MSI_data_cube)
