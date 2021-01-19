@@ -4,11 +4,11 @@
 
 Team Names | Sec | BN
 :--------:|:---------:|:-------:
-Mostafa Yehia | 2 | 33
 Ibrahem Elsayed | 1 | 1
+Donia Abd Elslam | 1 | 30
 Renad Taher | 1 | 34
 Mariem Ahmed | 2 | 29
-Donia Abd Elslam | 1 | 30
+Mostafa Yehia | 2 | 33
 
 # Layout
 * [Link to Data (Dropbox)](https://www.dropbox.com/sh/w2yfgnb0u3kragd/AADesjt7IJS873KbPM5so10_a?dl=0)
