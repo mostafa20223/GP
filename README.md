@@ -1,17 +1,16 @@
 # Tumor Heterogeneity
+
+<h1> Team Information </h1>
+
+Team Names | Sec | BN
+:--------:|:---------:|:-------:
+Mostafa Yehia | 2 | 33
+Ibrahem Elsayed | 1 | 1
+Renad Taher | 1 | 34
+Mariem Ahmed | 2 | 29
+Donia Abd Elslam | 1 | 30
+
 # Layout
-* <a href="#A"> Link to Data </a>
-* <a href="#B"> Doctor's Notes / Useful Links </a>
-* <a href="#C"> Thesis Documentation </a>
-
-<h2 id="A"> Link to Data </h2>
-
-[Link to Data (Dropbox)](https://www.dropbox.com/sh/w2yfgnb0u3kragd/AADesjt7IJS873KbPM5so10_a?dl=0)
-
-<h2 id="B"> Doctor's Notes / Useful Links </h2>
-
-[Doctor's Notes](https://github.com/mostafa20223/GP/blob/master/Doctor's%20Notes.md)
-
-<h2 id="C"> Thesis Documentation </h2>
-
-[Thesis](https://github.com/mostafa20223/GP/blob/master/Thesis.md)
+* [Link to Data (Dropbox)](https://www.dropbox.com/sh/w2yfgnb0u3kragd/AADesjt7IJS873KbPM5so10_a?dl=0)
+* [Doctor's Notes](https://github.com/mostafa20223/GP/blob/master/Doctor's%20Notes.md)
+* [Thesis](https://github.com/mostafa20223/GP/blob/master/Thesis.md)
