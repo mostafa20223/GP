@@ -38,9 +38,9 @@ PCA                         |                        T-SNE
 
 | Task           | Assigned to   | Current Status (done or in progress) |
 |----------------|---------------|----------------|
-| [1] | Ibrahim & Mustafa | [x] done |
-| [2] | Donia & Renad | [x] done |
-| [3] | Mariem & Ibrahim | [x] done |
-| [4] |  | [ ] in progress |
-| [5] |  | [ ] in progress |
-| [6] |  | [ ] in progress |
+| [1] | Ibrahim & Mustafa | - [x] done |
+| [2] | Donia & Renad | - [x] done |
+| [3] | Mariem & Ibrahim | - [x] done |
+| [4] |  | - [ ] in progress |
+| [5] |  | - [ ] in progress |
+| [6] |  | - [ ] in progress |
