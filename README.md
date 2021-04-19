@@ -11,6 +11,6 @@ Mariem Ahmed | 2 | 29
 Mostafa Yehia | 2 | 33
 
 # Layout
-* [Link to Data (Dropbox)](https://www.dropbox.com/sh/w2yfgnb0u3kragd/AADesjt7IJS873KbPM5so10_a?dl=0)
+* [Link to Data](http://doi.org/10.4121/uuid:827a63b1-0c33-464a-a61e-ba236f0302c4)
 * [Doctor's Notes](https://github.com/mostafa20223/GP/blob/master/Doctor's%20Notes.md)
 * [Thesis](https://github.com/mostafa20223/GP/blob/master/Thesis.md)
