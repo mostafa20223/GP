@@ -21,6 +21,7 @@
    * Similarly to what we have discussed today, please access the MSI data and show protein images at m/z = [4965, 4999, 5067]
    * Show the average spectrum of patient #1 and Patient #30
    * Apply the above described PCA analysis but on the breast cancer data
+6. Analysis of papers
 
 <h2 id="B"> General Notes / Useful Links </h2>
 
@@ -41,6 +42,6 @@ PCA                         |                        T-SNE
 | [1] | Ibrahim & Mustafa | - [x] done |
 | [2] | Donia & Renad | - [x] done |
 | [3] | Mariem & Ibrahim | - [x] done |
-| [4] |  | - [ ] in progress |
-| [5] |  | - [ ] in progress |
-| [6] |  | - [ ] in progress |
+| [4] | Mustafa & Mariem | - [ ] in progress |
+| [5] | Ibrahim | - [ ] in progress |
+| [6] | Renad & Donia | - [ ] in progress |
