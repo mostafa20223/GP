@@ -5,8 +5,7 @@ from MyClass import MyClass
 class gastricData(MyClass):
     # instance methods
     def survival_analysis(self):
-        pass
-
+        print("Test survival ...")
 
 
 
