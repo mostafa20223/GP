@@ -4,7 +4,7 @@ from MyClass import MyClass
 ################################ Section2 - Creating breastData Class ################################
 class breastData(MyClass):
     # instance methods
-    def survival_analysis(self):
+    def metastatis_status(self):
         pass
 
 

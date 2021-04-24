@@ -17,18 +17,19 @@ class MyClass:
         self.avg_int = self.peak_list[:, 1]
         self.low_bod = self.peak_list[:, 2]
         self.upp_bod = self.peak_list[:, 3]
+        self.ProteinNumber = self.peak_list.shape[0]
         self.pixels = np.array(self.MyData['goodlist']).T.astype(int)
         self.spectra = np.where(self.pixels == 1)[0]
-        self.pixel_sample_id = np.array(self.MyData['pixel_to_sample_ID']).T
+        self.pixel_to_sample_ID = np.array(self.MyData['pixel_to_sample_ID']).T
         self.HE_image = np.array(self.MyData['HE_image']).T
         self.MSI = np.array(self.MyData['MSI_data_cube']).T
         print(self.MyData.keys())
 
     def reshape_data(self, height, width):
         self.pixels_img = np.reshape(self.pixels, (height, width), order = 'F')
-        self.pixel_sample = np.reshape(self.pixel_sample_id, (height * width, 1), order = 'F')
+        self.pixel_sample = np.reshape(self.pixel_to_sample_ID, (height * width, 1), order = 'F')
         self.HE_image_reshaped = np.reshape(self.HE_image, (height * width, 3), order = 'F')
-        self.MSI_reshaped = np.reshape(self.MSI, (height * width, 62), order = 'F')
+        self.MSI_reshaped = np.reshape(self.MSI, (height * width, self.ProteinNumber), order = 'F')
         self.MassSpec = self.MSI_reshaped[self.spectra, :]
 
     def print_info(self, argument):
@@ -77,21 +78,21 @@ class MyClass:
     def dimensionality_reduction(self, technique, n_components):
         if(technique == "PCA"):
             if(n_components == 2):
-                self.pca_2 = np.load("/home/mustafa/Downloads/GP/Code/breastData/DataToBeLoaded/pca_2.npy")
+                self.pca_2 = np.load("Code/breastData/DataToBeLoaded/pca_2.npy")
                 return self.pca_2
             elif(n_components == 3):
-                self.pca_3 = np.load("/home/mustafa/Downloads/GP/Code/breastData/DataToBeLoaded/pca_3.npy")
+                self.pca_3 = np.load("Code/breastData/DataToBeLoaded/pca_3.npy")
                 return self.pca_3
             elif(n_components == 5):
-                self.pca_5 = np.load("/home/mustafa/Downloads/GP/Code/breastData/DataToBeLoaded/pca_5.npy")
+                self.pca_5 = np.load("Code/breastData/DataToBeLoaded/pca_5.npy")
                 return self.pca_5
         if(technique == "t-SNE"):
             if(n_components == 2):
-                self.tsne2 = np.load("/home/mustafa/Downloads/GP/Code/breastData/DataToBeLoaded/tsne2.npy")
+                self.tsne2 = np.load("Code/breastData/DataToBeLoaded/tsne2.npy")
                 return self.tsne2
             elif(n_components == 3):
-                self.tsne3 = np.load("/home/mustafa/Downloads/GP/Code/breastData/DataToBeLoaded/tsne3.npy")
-                self.tsne3new = np.load("/home/mustafa/Downloads/GP/Code/breastData/DataToBeLoaded/tsne3new.npy")
+                self.tsne3 = np.load("Code/breastData/DataToBeLoaded/tsne3.npy")
+                self.tsne3new = np.load("Code/breastData/DataToBeLoaded/tsne3new.npy")
                 return self.tsne3new
 
     def plot_dimensionality_reduction(self, argument, string, variable1, variable2):
@@ -155,6 +156,25 @@ class MyClass:
         jet_cb = plt.imshow(self.KMeans_RGB, cmap = jet_cmap)
         cbar = plt.colorbar(jet_cb, ticks = [0, 1, 2, 3], shrink = 0.2)
         plt.show()
+
+    def Clinical_data(self, path):
+        self.ClinicalData = pd.read_csv(path)
+        print(self.ClinicalData)
+
+    def getPeaks(self, Patient_ID, counter = 0):
+        self.indexHeight = np.where(self.pixel_to_sample_ID == Patient_ID)[0]
+        self.indexWidth = np.where(self.pixel_to_sample_ID == Patient_ID)[1]
+        self.P1_MaxPeak = []
+        while(1):
+            self.values_P1 = []
+            for i, j in zip(self.indexHeight, self.indexWidth):
+                self.values_P1.append(self.MSI[i, j, counter])
+            self.P1_MaxPeak.append(max(self.values_P1))
+            counter += 1
+            if counter == self.ProteinNumber:
+                break
+        self.P1_MaxPeak = np.array(self.P1_MaxPeak)
+        np.savetxt("PPP" + str(Patient_ID) + ".csv", self.P1_MaxPeak, delimiter = ",")
 
 """
     PCA function implementation
