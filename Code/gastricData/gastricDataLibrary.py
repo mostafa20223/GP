@@ -20,7 +20,7 @@ import matplotlib.colors as mcol
 """
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
-from sklearn.cluster import KMeans, MeanShift
+from sklearn.cluster import KMeans
 
 """
     Libraries to apply Survival Analysis

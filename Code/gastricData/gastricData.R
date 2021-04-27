@@ -1,28 +1,21 @@
-library(RcppCNPy)
-library(Rtsne)
-library(scatterplot3d)
-library(ggplot2)
+library(survival)
+library(samr)
+    
+set.seed(100)
 
-MassSpec <- npyLoad("Data/gastricData/MassSpec_Gastric.npy")
+joindata <- read.table("AveragePeaks.txt", sep = "\t", header = TRUE)
+msdata <- joindata[,2:83]
+# print(msdata)
 
-set.seed(42)
-tsne_out <- Rtsne(as.matrix(MassSpec), dims = 3)
-tsne_out1 <- Rtsne((MassSpec), dims = 3)
-df <- data.frame(matrix(unlist(tsne_out), nrow=length(tsne_out), byrow=TRUE))
+d = list(x = t(msdata), y = joindata$Surv_status, geneid = as.character(1:82), genenames = names(msdata), logged2 = TRUE) 
+# print(d)
 
-ggplot(df)
-# print(typeof(tsne_out))
-# print(typeof(tsne_out1))
+samr.obj = samr(d, resp.type = "Two class unpaired", nperms = 200)
+# # samr.obj = samr(d, resp.type = "Multiclass", nperms = 200)
+delta.table <- samr.compute.delta.table(samr.obj)
+ 
+delta = 0.906135     #Note: Recheck this value by looking at the values of delta.table and choose the value correspondes to (FDR <0.001)
 
-# scatterplot3d(tsne_out, y = NULL, z = NULL)
-
-# library(samr)
-
-# set.seed(100)
-# samfit <- SAM(MassSpec_R, tsne3_R, resp.type = "Two class unpaired")
-
-# # examine significant gene list
-# print(samfit)
-
-# # plot results
-# plot(samfit)
+samr.plot(samr.obj,delta)
+# siggenes.table <- samr.compute.siggenes.table(samr.obj, delta, d, delta.table)
+# siggenes.table

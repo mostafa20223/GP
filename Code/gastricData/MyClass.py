@@ -6,6 +6,7 @@ class MyClass:
     #__init__ constructor
     def __init__(self, path):
         self.MyData = h5py.File(path, 'r')
+        print(self.MyData.keys())
     
     # methods
     def set_data(self):
@@ -23,7 +24,11 @@ class MyClass:
         self.pixel_to_sample_ID = np.array(self.MyData['pixel_to_sample_ID']).T
         self.HE_image = np.array(self.MyData['HE_image']).T
         self.MSI = np.array(self.MyData['MSI_data_cube']).T
-        print(self.MyData.keys())
+        self.reshape_data(self.y[0][0], self.x[0][0])
+        # self.plot_images("goodlist", self.pixels_img)
+        # self.plot_images("pixel_sample_id", self.pixel_to_sample_ID)
+        # self.plot_images("HE_image", self.HE_image)
+        # self.plot_MSI()
 
     def reshape_data(self, height, width):
         self.pixels_img = np.reshape(self.pixels, (height, width), order = 'F')
@@ -171,12 +176,53 @@ class MyClass:
             self.values_P1 = []
             for i, j in zip(self.indexHeight, self.indexWidth):
                 self.values_P1.append(self.MSI[i, j, counter])
-            self.P1_MaxPeak.append(max(self.values_P1))
+            self.P1_MaxPeak.append(np.mean(self.values_P1))
             counter += 1
             if counter == self.ProteinNumber:
                 break
         self.P1_MaxPeak = np.array(self.P1_MaxPeak)
-        np.savetxt("PPP" + str(Patient_ID) + ".csv", self.P1_MaxPeak, delimiter=",")
+        np.savetxt("PPP" + str(Patient_ID) + ".csv", self.P1_MaxPeak, delimiter = ",")
+
+    def getClusters(self, Patient_ID, labels):
+        # self.kmeans = np.load("kmeans_test.npy")
+        # self.labels = (np.reshape(self.kmeans, (54833, 1), order='F')) + 1
+        self.clusters = np.zeros_like(self.pixels, order="F")
+        self.clusters[self.spectra, :] = labels
+        self.clusters_pateints = np.reshape(self.clusters, (443, 1653), order='F')
+        self.indexHeight = np.where(self.pixel_to_sample_ID == Patient_ID)[0]
+        self.indexWidth = np.where(self.pixel_to_sample_ID == Patient_ID)[1]
+        self.cluster1, self.cluster2, self.cluster3, self.total_clusters, self.dominant_cluster1, self.dominant_cluster2, self.dominant_cluster3 = 0, 0, 0, 0, False, False, False
+
+        for i, j in zip(self.indexHeight, self.indexWidth):
+            if self.clusters_pateints[i, j] == 1:
+                self.cluster1 += 1
+            if self.clusters_pateints[i, j] == 2:
+                self.cluster2 += 1
+            if self.clusters_pateints[i, j] == 3:
+                self.cluster3 += 1
+
+        print("cluster1 total number:", self.cluster1)
+        print("cluster2 total number:", self.cluster2)
+        print("cluster3 total number:", self.cluster3)
+
+        self.total_clusters = (self.cluster1 + self.cluster2 + self.cluster3) / 3
+        print("total number of clusters is:", self.total_clusters)
+        if self.cluster1 > self.total_clusters:
+            self.dominant_cluster1 = True
+        if self.cluster2 > self.total_clusters:
+            self.dominant_cluster2 = True
+        if self.cluster3 > self.total_clusters:
+            self.dominant_cluster3 = True
+
+        if self.dominant_cluster1:
+            print("Patient" + str(Patient_ID) + " is in cluster1")
+        if self.dominant_cluster2:
+            print("Patient" + str(Patient_ID) + " is in cluster2")
+        if self.dominant_cluster3:
+            print("Patient" + str(Patient_ID) + " is in cluster3")
+
+        print("-------------------------------------------------------------")
+
 
 """
     PCA function implementation

@@ -3,20 +3,33 @@
     gastricData Class
 """
 from gasticDataClass import gastricData
+import sys
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
 
 NO_OF_PNTs = 63
 
 gastricDataVar = gastricData("Data/gastricData/gastricData.mat")
 gastricDataVar.set_data()
-gastricDataVar.reshape_data(gastricDataVar.y[0][0], gastricDataVar.x[0][0])
-MSI_reshaped = gastricDataVar.MSI_reshaped
-MassSpec = gastricDataVar.MassSpec
 
-# im = readNPY('/path/to/file.npy');
+# tsne3_V2 = np.load("Data/gastricData/gastricTSNE2.npy")
+# test = np.reshape(KMeans(n_clusters = 3, init = 'random', random_state = 123).fit_predict(tsne3_V2) + 1, (54833, 1), order = "F")
+# test2 = np.reshape(KMeans(n_clusters = 3, random_state = 123).fit_predict(tsne3_V2) + 1, (54833, 1), order = "F")
 
-# tsne3 = gastricDataVar.dimensionality_reduction("t-SNE", 3)
-# gastricDataVar.plot_dimensionality_reduction("t-SNE3", "t-SNE of All Spectra Data and Number of Components is 3 in Scatter Space", gastricDataVar.tsne3, gastricDataVar.MassSpec[:, 5])
-# gastricDataVar.plot_dimensionality_reduction("t-SNE3", "t-SNE of All Spectra Data and Number of Components is 3 in Scatter Space", gastricDataVar.tsne3new, gastricDataVar.MassSpec[:, 5])
+for i in range(1, NO_OF_PNTs + 1):
+    gastricDataVar.getPeaks(i, 0)
+
+"""
+stdoutOrigin = sys.stdout
+sys.stdout = open("gastricPatients_Clusters_test2.txt", "w")
+
+for i in range(1, NO_OF_PNTs + 1):
+    gastricDataVar.getClusters(i, np.load("test.npy"))
+
+sys.stdout.close()
+sys.stdout = stdoutOrigin
+"""
 
 """
     Dimensionality Reduction
@@ -36,6 +49,12 @@ KMeans_labels = gastricDataVar.KMeans_clustering(3)
     Get Protein Peaks for Each Patient
 for i in range(1, NO_OF_PNTs + 1):
     gastricDataVar.getPeaks(i, 0)
+"""
+
+"""
+    Assign Clusters for Each Patient
+for i in range(1, NO_OF_PNTs + 1):
+    gastricDataVar.getClusters(i)
 """
 
 """
