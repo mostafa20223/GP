@@ -22,6 +22,9 @@
    * Show the average spectrum of patient #1 and Patient #30
    * Apply the above described PCA analysis but on the breast cancer data
 6. Analysis of papers
+7. Add colors of clusters in KMF (Survival Analysis)
+8. Visualzation of clusters in scatter space # (k = 2 to k = 5) #
+9. SAM for all intensities in clusters
 
 <h2 id="B"> General Notes / Useful Links </h2>
 
@@ -44,4 +47,7 @@ PCA                         |                        T-SNE
 | [3] | Mariem & Ibrahim | - [x] done |
 | [4] | Mustafa & Mariem | - [ ] in progress |
 | [5] | Ibrahim | - [ ] in progress |
-| [6] | Renad & Donia | - [ ] in progress |
+| [6] | Renad & Donia | - [o] almost done |
+| [7] |  | - [ ]  |
+| [8] |  | - [ ]  |
+| [9] |  | - [ ]  |
